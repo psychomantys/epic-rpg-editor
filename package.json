@@ -21,7 +21,7 @@
     "grunt-shell": "*",
     "grunt": "*",
     "grunt-cli": "*",
-    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-contrib-jasmine": "*",
     "grunt-template-jasmine-requirejs": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
