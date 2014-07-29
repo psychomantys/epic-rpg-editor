@@ -59,7 +59,7 @@ function( Handlebars, Backbone, $, DeT3EA ) {
 	}
 	function reprint_template( nome , data ){
 		$(".main-view").html( render( nome, data) );
-	};
+	}
 
 
 
@@ -80,7 +80,7 @@ function( Handlebars, Backbone, $, DeT3EA ) {
 			}
 		});
 		// Initiate the router
-		var app_router = new AppRouter;
+		var app_router = new AppRouter();
 
 		app_router.on('route:render_info', function(actions) {
 			$("li.active").removeClass("active");
