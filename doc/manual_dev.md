@@ -64,7 +64,7 @@ Cordova-cli(https://github.com/apache/cordova-cli)
 Include sdks bin paths on PATH, and:
 
 ```shell
-export PATH="${PATH}:node_modules/.bin/"
+export PATH="${PATH}:./node_modules/.bin/"
 ```
 
 Test application for android:
