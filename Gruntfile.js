@@ -46,13 +46,16 @@ module.exports = function(grunt) {
 			stdout: true
 		},
 		debug_ios: {
-			command: 'cordova build ios && cordova emulate ios'
+			//command: 'cordova build ios && cordova emulate ios'
+			command: 'cordova build ios && cordova run ios'
 		},
 		debug_android: {
-			command: 'cordova build android && cordova emulate android'
+			//command: 'cordova build android && cordova emulate android'
+			command: 'cordova build android && cordova run android'
 		},
 		debug_blackberry: {
-			command: 'cordova build blackberry && cordova emulate blackberry'
+			//command: 'cordova build blackberry && cordova emulate blackberry'
+			command: 'cordova build blackberry && cordova run blackberry'
 		}
 	},requirejs: {
 		compile: {
