@@ -13,4 +13,41 @@
 	{{else}}
 	<p>Nenhuma</p>
 	{{/each}}
+
+	</br>
+	<!-- Button trigger modal -->
+	<button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#vantagens-modal">
+		Adicionar Vantagem
+	</button>
+	</br>
+
+	<!-- Modal -->
+	<div class="modal fade" id="vantagens-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Adicionar Vantagem</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Nome da Vantagem">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Custo">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Descrição">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

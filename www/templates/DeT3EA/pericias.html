@@ -3,14 +3,52 @@
 <div class="panel-group" id="accordion">
 	{{#each this}}
 	<div class="panel panel-default">
-		<div class="panel-heading" onclick="$(this).parent().children('.collapse').collapse('toggle')">
-			<h4 class="panel-title">{{nome}} ({{custo}})</h4>
+		<div class="panel-heading">
+			<span onclick="$(this).parent().parent().children('.collapse').collapse('toggle')"><h4 class="panel-title">{{nome}} ({{custo}})</h4></span>
 		</div>
 		<div class="panel-collapse collapse">
 			<div class="panel-body">{{desc}}</div>
+			<button class="btn btn-default" onclick="pericia_edit('{{@index}}')">Editar</button>
 		</div>
 	</div>
 	{{else}}
 	<p>Nenhuma</p>
 	{{/each}}
+
+	</br>
+	<!-- Button trigger modal -->
+	<button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#pericias-modal">
+		Adicionar Pericia
+	</button>
+	</br>
+
+	<!-- Modal -->
+	<div class="modal fade" id="pericias-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="myModalLabel">Adicionar Pericia</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Nome da Pericia">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Custo">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"></span>
+						<input type="text" class="form-control" placeholder="Descrição">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
