@@ -18,7 +18,7 @@ describe("A false case", function() {
 	});
 });
 
-require(["jquery"],
+define(["jquery"],
 function ($) {
 
 describe("Um teste de teste", function() {
