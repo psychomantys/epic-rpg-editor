@@ -3,8 +3,8 @@
 <div class="panel-group" id="accordion">
 	{{#each this}}
 	<div class="panel panel-default">
-		<div class="panel-heading">
-			<span onclick="$(this).parent().parent().children('.collapse').collapse('toggle')"><h4 class="panel-title">{{nome}} ({{custo}})</h4></span>
+		<div onclick="$(this).parent().children('.collapse').collapse('toggle')" class="panel-heading">
+			<span ><h4 class="panel-title">{{nome}} ({{custo}})</h4></span>
 		</div>
 		<div class="panel-collapse collapse">
 			<div class="panel-body">{{desc}}</div>

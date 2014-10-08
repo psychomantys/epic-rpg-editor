@@ -1,13 +1,16 @@
+"use strict";
 
 require.config({
 	"baseUrl": ".",
 	"paths": {
-		"jquery": "thirdparty/jquery",
-		"Handlebars": "thirdparty/handlebars",
-		"bootstrap": "thirdparty/bootstrap/dist/js/bootstrap.min",
-		"yaap": "thirdparty/yaap/yaap/yaap",
-		"Backbone": "thirdparty/backbone",
-		'underscore': 'thirdparty/underscore'
+		'jquery': "thirdparty/jquery",
+		'Handlebars': "thirdparty/handlebars",
+		'bootstrap': "thirdparty/bootstrap/dist/js/bootstrap.min",
+		'yaap': "thirdparty/yaap/yaap/yaap",
+		'Backbone': "thirdparty/backbone",
+		'underscore': 'thirdparty/underscore',
+		'Templates': 'js/epic-rpg-editor/templates',
+		'DeT3EA': 'js/DeT3EA/DeT3EA'
 	},
 	shim: {
 		'jquery': {
@@ -30,41 +33,18 @@ require.config({
 });
 
 
-require(['Handlebars', 'Backbone', 'jquery', "js/DeT3EA/DeT3EA", "bootstrap"],
-function( Handlebars, Backbone, $, DeT3EA ) {
-	function render(tmpl_name, tmpl_data) {
-		if ( !render.tmpl_cache ) { 
-			render.tmpl_cache = {};
-		}
-
-		if ( ! render.tmpl_cache[tmpl_name] ) {
-			var tmpl_dir = 'templates/DeT3EA';
-			var tmpl_url = tmpl_dir + '/' + tmpl_name + '.html';
-
-			var tmpl_string;
-			$.ajax({
-				url: tmpl_url,
-				method: 'GET',
-				async: false,
-				dataType: 'html',
-				success: function(data) {
-					tmpl_string = data;
-				}
-			});
-
-			render.tmpl_cache[tmpl_name] = Handlebars.compile(tmpl_string);
-		}
-
-		return render.tmpl_cache[tmpl_name](tmpl_data);
-	}
-	function reprint_template( nome , data ){
-		$(".main-view").html( render( nome, data) );
-	}
-
-
-
+require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap'],
+function(Backbone, $, DeT3EA, Templates ) {
+	pericia_edit=function(n){
+		alert(":"+n);
+	};
 
 	var player = new DeT3EA();
+	var t = new Templates('templates/DeT3EA');
+
+	function reprint_template( nome , data ){
+		$(".main-view").html( t.render( nome, data) );
+	}
 
 	$( document ).ready( function() {
 		$("a[href='"+window.location.hash.substr(1)+"']").addClass("active");
