@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 			define: true,
 			require: true,
 			requirejs: true,
-			pericia_edit: true
+			global_ns: true
 		}
 	},
 	watch: {

@@ -3,11 +3,11 @@
 require.config({
 	"baseUrl": ".",
 	"paths": {
-		'jquery': "thirdparty/jquery",
-		'Handlebars': "thirdparty/handlebars",
-		'bootstrap': "thirdparty/bootstrap/dist/js/bootstrap.min",
-		'yaap': "thirdparty/yaap/yaap/yaap",
-		'Backbone': "thirdparty/backbone",
+		'jquery': 'thirdparty/jquery',
+		'Handlebars': 'thirdparty/handlebars',
+		'bootstrap': 'thirdparty/bootstrap/dist/js/bootstrap.min',
+		'yaap': 'thirdparty/yaap/yaap/yaap',
+		'Backbone': 'thirdparty/backbone',
 		'underscore': 'thirdparty/underscore',
 		'Templates': 'js/epic-rpg-editor/templates',
 		'DeT3EA': 'js/DeT3EA/DeT3EA'
@@ -26,7 +26,7 @@ require.config({
 		'bootstrap': {
 			deps: ['jquery']
 		},
-		underscore: {
+		'underscore': {
 			exports: '_'
 		}
 	}
@@ -35,12 +35,18 @@ require.config({
 
 require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap'],
 function(Backbone, $, DeT3EA, Templates ) {
-	pericia_edit=function(n){
-		alert(":"+n);
-	};
-
 	var player = new DeT3EA();
 	var t = new Templates('templates/DeT3EA');
+
+	global_ns.pericia_edit=function(n){
+		alert(player.pericias[n].nome);
+	};
+	global_ns.vantagem_edit=function(n){
+		alert(player.vantagens[n].nome);
+	};
+	global_ns.desvantagem_edit=function(n){
+		alert(player.desvantagens[n].nome);
+	};
 
 	function reprint_template( nome , data ){
 		$(".main-view").html( t.render( nome, data) );
@@ -48,7 +54,6 @@ function(Backbone, $, DeT3EA, Templates ) {
 
 	$( document ).ready( function() {
 		$("a[href='"+window.location.hash.substr(1)+"']").addClass("active");
-
 
 		var AppRouter = Backbone.Router.extend({
 			routes: {
