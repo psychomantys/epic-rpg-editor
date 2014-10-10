@@ -61,6 +61,8 @@ function(Backbone, $, DeT3EA, Templates ) {
 				"vantagens": "render_vantagens",
 				"desvantagens": "render_desvantagens",
 				"pericias": "render_pericias",
+				"save": "render_save",
+				"load": "render_load",
 				"*actions": "render_info" // matches http://example.com/#anything-here
 			}
 		});
@@ -86,6 +88,16 @@ function(Backbone, $, DeT3EA, Templates ) {
 			$("li.active").removeClass("active");
 			$("a[href='#/pericias']").parent().addClass("active");
 			reprint_template("pericias",player.pericias);
+		});
+		app_router.on('route:render_save', function(actions) {
+			$("li.active").removeClass("active");
+			$("a[href='#/save']").parent().addClass("active");
+			reprint_template("save",undefined);
+		});
+		app_router.on('route:render_load', function(actions) {
+			$("li.active").removeClass("active");
+			$("a[href='#/load']").parent().addClass("active");
+			reprint_template("load",undefined);
 		});
 
 		// Start Backbone history a necessary step for bookmarkable URL's
