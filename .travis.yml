@@ -8,7 +8,7 @@ node_js:
 # please update this section to your needs!
 notifications:
   email:
-    - psycho.mantys@gmail.com
+    - epic-rpg-editor-dev@googlegroups.com
 
 branches:
   only:
