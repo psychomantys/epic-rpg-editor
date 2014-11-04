@@ -1,0 +1,210 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Personagem 3D&T",
+    "type": "object",
+    "properties": {
+        "nome": {
+            "description": "Nome do personagem",
+            "type": "string"
+        },
+        "jogador": {
+            "description": "Nome do jogador",
+            "type": "string"
+        },
+        "xp_sobrando": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "kits": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/simples" },
+            "uniqueItems": true
+        },
+        "características": {
+            "type": "object",
+            "properties": {
+                "f": { "$ref": "#/definitions/caracteristica_dano" },
+                "h": { "$ref": "#/definitions/caracteristica" },
+                "r": { "$ref": "#/definitions/caracteristica" },
+                "a": { "$ref": "#/definitions/caracteristica" },
+                "pdf": { "$ref": "#/definitions/caracteristica_dano" }
+            },
+            "required": ["f", "h", "r", "a", "pdf"],
+            "additionalProperties": false
+        },
+        "situação": {
+            "type": "object",
+            "properties": {
+                "pv": { "$ref": "#/definitions/pontuação" },
+                "pm": { "$ref": "#/definitions/pontuação" }
+            },
+            "required": ["pv", "pm"],
+            "additionalProperties": false
+        },
+        "vantagens": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "nome": { "type": "string" },
+                    "pontos": { "type": "integer" },
+                    "suplemento": { "type": "string" },
+                    "nota": { "type": "string" }
+                },
+                "required": ["nome", "pontos", "suplemento"],
+                "additionalProperties": false
+            },
+            "uniqueItems": true
+        },
+        "perícias": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "nome": { "type": "string" },
+                    "pontos": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "suplemento": { "type": "string" },
+                    "nota": { "type": "string" }
+                },
+                "required": ["nome", "pontos", "suplemento"],
+                "additionalProperties": false
+            },
+            "uniqueItems": true
+        },
+        "magias": { "$ref": "#/definitions/lista_simples" },
+        "itens": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "nome": { "type": "string" },
+                    "suplemento": { "type": "string" },
+                    "quantidade": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "nota": { "type": "string" }
+                },
+                "required": ["nome", "suplemento", "quantidade"],
+                "additionalProperties": false
+            },
+            "uniqueItems": true
+        },
+        "história": { "type": "string" },
+        "foto": {
+            "type": "object",
+            "properties": {
+                "type": { "type": "string" },
+                "encoding": { "type": "string" },
+                "data": { "type": "string" }
+            },
+            "required": ["type", "data"],
+            "additionalProperties": false
+        }
+    },
+    "required": ["nome", "jogador", "xp_sobrando", "kits", "características",
+                 "situação", "vantagens", "perícias", "magias", "itens",
+                 "história"],
+    "additionalProperties": false,
+    "definitions": {
+        "simples": {
+            "type": "object",
+            "properties": {
+                "nome": { "type": "string" },
+                "suplemento": { "type": "string" },
+                "nota": { "type": "string" }
+            },
+            "required": ["nome", "suplemento"],
+            "additionalProperties": false
+        },
+        "lista_simples": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/simples" },
+            "uniqueItems": true
+        },
+        "caracteristica": {
+            "type": "object",
+            "properties": {
+                "base": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "modificadores": { "$ref": "#/definitions/modificadores" }
+            },
+            "required": ["base", "modificadores"],
+            "additionalProperties": false
+        },
+        "caracteristica_dano": {
+            "type": "object",
+            "properties": {
+                "base": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "danos": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "nome": { "type": "string" },
+                            "nota": { "type": "string" }
+                        },
+                        "required": ["nome"],
+                        "additionalProperties": false
+                    },
+                    "minItems": 1
+                },
+                "modificadores": { "$ref": "#/definitions/modificadores" }
+            },
+            "required": ["base", "danos", "modificadores"],
+            "additionalProperties": false
+        },
+        "pontuação": {
+            "type": "object",
+            "properties": {
+                "atual": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "max": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "valor_multiplicativo": {
+                                "description": "acumulado na constante 5, da fórmula R×5",
+                                "type": "integer"
+                            },
+                            "valor_aditivo": {
+                                "description": "acumulado aos pontos resultantes da fórmula R×5",
+                                "type": "integer"
+                            },
+                            "nota": { "type": "string" }
+                        },
+                        "required": ["valor_multiplicativo", "valor_aditivo"],
+                        "additionalProperties": false
+                    }
+                },
+                "nota": { "type": "string" }
+            },
+            "required": ["atual", "max"],
+            "additionalProperties": false
+        },
+        "modificadores": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "valor": { "type": "integer" },
+                    "nota": { "type": "string" },
+                    "ativo": { "type": "boolean" }
+                },
+                "required": ["valor", "ativo"],
+                "additionalProperties": false
+            }
+        }
+    }
+}
