@@ -10,12 +10,16 @@ require.config({
 		'yaap': 'thirdparty/yaap/yaap/yaap',
 		'Backbone': 'thirdparty/backbone',
 		'underscore': 'thirdparty/underscore',
+		'FileSaver': 'thirdparty/FileSaver',
 		'Templates': 'js/epic-rpg-editor/templates',
 		'DeT3EA': 'js/DeT3EA/DeT3EA'
 	},
 	shim: {
 		'jquery': {
 			exports: '$'
+		},
+		'FileSaver': {
+			exports: 'saveAs'
 		},
 		'Handlebars': {
 			exports: 'Handlebars'
@@ -37,7 +41,7 @@ require.config({
 });
 
 
-require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap', 'bootstrap-combobox'],
+require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap', 'bootstrap-combobox', 'FileSaver'],
 function(Backbone, $, DeT3EA, Templates ) {
 	var player = new DeT3EA();
 	var t = new Templates('templates/DeT3EA');
@@ -56,6 +60,10 @@ function(Backbone, $, DeT3EA, Templates ) {
 	};
 	global_ns.set_player=function(p){
 		player=JSON.parse( p );
+	};
+	global_ns.download_player=function(){
+		var blob = new Blob([JSON.stringify(player)], {type: "text/plain;charset=utf-8"});
+		saveAs(blob, "char.json");
 	};
 
 	function reprint_template( nome , data ){
