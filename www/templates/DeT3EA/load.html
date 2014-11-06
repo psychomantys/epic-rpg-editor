@@ -1,18 +1,63 @@
 <h1>Carregar Personagem</h1>
 
 <div class="form-group">
-	<label>Escolha o metodo:</label>
-	<select class="combobox input-large form-control" name="normal">
-		<option value="" selected="selected">Select a State</option>
-		<option value="text">Entrar com texto</option>
-		<option value="file">Ler arquivo</option>
+	<select onchange="show_item(this)" class="combobox input-large form-control" name="normal">
+		<option value="" selected="selected">Escolha o metodo:</option>
+		<option value="item-text">Gerar texto</option>
+		<option value="item-file">Gerar arquivo</option>
 	</select>
 </div>
 
+<div class="block tela" style="display:none" id="item-text">
+	<label>Copie o texto:</label>
+	<p><textarea id="result"></textarea></p>
+	<button onclick="global_ns.set_player( document.getElementById('result').value )">Update</button>
+</div>
+
+
 <script type="text/javascript">
 //<![CDATA[
-	$(document).ready(function(){
-		$('.combobox').combobox()
+//var allHTMLTags = new Array();
+function getElementByClass(theClass, handle ) {
+	//Create Array of All HTML Tags
+	var allHTMLTags=document.getElementsByTagName("*");
+
+	//Loop through all tags using a for loop
+	var i=0;
+	var matches;
+	for( i=0; i<allHTMLTags.length; i++) {
+		//Get all tags with the specified class name.
+		matches=allHTMLTags[i].className.match(theClass);
+		if( matches && matches.length>0 ){
+			//Place any code you want to apply to all
+			//pages with the class specified.
+			handle(allHTMLTags[i]);
+		}
+	}
+};
+
+function show_item_contanier( item_name ) {
+	//document.getElementById(item_name).style.visibility="";
+	document.getElementById(item_name).style.display = "";
+};
+function hideAllByClass( class_name ){
+	getElementByClass(class_name, function( element ){
+		element.style.display="none";
 	});
+};
+function show_item(sel){
+	if( sel.value == "" ){
+		hideAllByClass('block tela');
+	}else{
+		hideAllByClass('block tela');
+		show_item_contanier( sel.value );
+	}
+}
+
+$(document).ready(function(){
+	// Ativar combobox em todos as classes "combobox".
+	// Por algum motivo esse não é o comportamento padrão...
+	$('.combobox').combobox();
+});
 //]]>
 </script>

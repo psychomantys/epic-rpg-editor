@@ -51,6 +51,12 @@ function(Backbone, $, DeT3EA, Templates ) {
 	global_ns.desvantagem_edit=function(n){
 		alert(player.desvantagens[n].nome);
 	};
+	global_ns.get_player=function(){
+		return JSON.stringify(player);
+	};
+	global_ns.set_player=function(p){
+		player=JSON.parse( p );
+	};
 
 	function reprint_template( nome , data ){
 		$(".main-view").html( t.render( nome, data) );
