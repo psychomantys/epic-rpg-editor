@@ -27,7 +27,8 @@ module.exports = function(grunt) {
 			define: true,
 			require: true,
 			requirejs: true,
-			global_ns: true
+			global_ns: true,
+			saveAs: true
 		}
 	},
 	watch: {
