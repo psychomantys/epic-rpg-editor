@@ -6,6 +6,7 @@ require.config({
 		'jquery': 'thirdparty/jquery',
 		'Handlebars': 'thirdparty/handlebars',
 		'bootstrap': 'thirdparty/bootstrap/dist/js/bootstrap.min',
+		'bootstrap-combobox': 'thirdparty/bootstrap-combobox/js/bootstrap-combobox',
 		'yaap': 'thirdparty/yaap/yaap/yaap',
 		'Backbone': 'thirdparty/backbone',
 		'underscore': 'thirdparty/underscore',
@@ -26,6 +27,9 @@ require.config({
 		'bootstrap': {
 			deps: ['jquery']
 		},
+		'bootstrap-combobox': {
+			deps: ['jquery','bootstrap']
+		},
 		'underscore': {
 			exports: '_'
 		}
@@ -33,7 +37,7 @@ require.config({
 });
 
 
-require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap'],
+require(['Backbone', 'jquery', 'DeT3EA', 'Templates', 'bootstrap', 'bootstrap-combobox'],
 function(Backbone, $, DeT3EA, Templates ) {
 	var player = new DeT3EA();
 	var t = new Templates('templates/DeT3EA');
