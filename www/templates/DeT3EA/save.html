@@ -1,6 +1,18 @@
 <h1>Salvar Personagem</h1>
 
-<h4>Escolha o metodo:<h4>
+<div class="form-group">
+	<label>Escolha o metodo:</label>
+	<select class="combobox input-large form-control" name="normal">
+		<option value="" selected="selected">Select a State</option>
+		<option value="text">Gerar texto</option>
+		<option value="file">Gerar arquivo</option>
+	</select>
+</div>
 
-
-
+<script type="text/javascript">
+//<![CDATA[
+	$(document).ready(function(){
+		$('.combobox').combobox()
+	});
+//]]>
+</script>

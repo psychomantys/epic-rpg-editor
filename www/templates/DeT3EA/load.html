@@ -1,4 +1,18 @@
 <h1>Carregar Personagem</h1>
 
-<h4>Escolha o metodo:<h4>
+<div class="form-group">
+	<label>Escolha o metodo:</label>
+	<select class="combobox input-large form-control" name="normal">
+		<option value="" selected="selected">Select a State</option>
+		<option value="text">Entrar com texto</option>
+		<option value="file">Ler arquivo</option>
+	</select>
+</div>
 
+<script type="text/javascript">
+//<![CDATA[
+	$(document).ready(function(){
+		$('.combobox').combobox()
+	});
+//]]>
+</script>
