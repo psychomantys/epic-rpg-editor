@@ -1,5 +1,6 @@
 <h1>Salvar Personagem</h1>
 
+<!-- Menu com as opções que se pode escolher...-->
 <div class="form-group">
 	<select onchange="show_item(this)" class="combobox input-large form-control" name="normal">
 		<option value="" selected="selected">Escolha o metodo:</option>
@@ -8,15 +9,26 @@
 	</select>
 </div>
 
+
+
+
+
+<!-- As opções-->
 <div class="block tela" style="display:none" id="item-text">
 	<label>Copie o texto:</label>
 	<p><textarea readonly="readonly" id="result"></textarea></p>
-	<button onclick="document.getElementById('result').value=global_ns.get_player()">Update</button>
+	<button class="btn btn-primary" onclick="document.getElementById('result').value=global_ns.get_player()">Atualizar</button>
 </div>
 
+
+
 <div class="block tela" style="display:none" id="item-file">
-	<button onclick="global_ns.download_player()">Baixar Arquivo</button>
+	<button class="btn btn-primary" onclick="global_ns.download_player()">Baixar Arquivo</button>
 </div>
+
+
+
+
 
 
 <script type="text/javascript">
