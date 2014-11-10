@@ -5,7 +5,11 @@
 		<meta name="format-detection" content="telephone=no"/>
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<!-- Bootstrap core CSS -->
 		<link href="thirdparty/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="thirdparty/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet">
+
+		<!-- Bootstrap core CSS -->
 		<link rel="icon" type="image/png" href="img/logo.png">
 		<title>Epic RPG Editor</title>
 	</head>
@@ -15,13 +19,20 @@
 
 
 		<div class="page-header">
-				  <h1><div>Epic RPG Editor</div><div><small>Escolha o seu sistema</small></div></h1>
+			<h1><div>Epic RPG Editor</div><div><small>Escolha o seu sistema</small></div></h1>
 		</div>
 			<div class="btn-group btn-group-justified btn-group-vertical">
 			<div class="btn-group">
-					  <p>
-					  <a href='DeT3EA.html'><button type="button" class="btn btn-default">Defensores de Toquio 3 Edição Alpha</button></a>
-					  </p>
+				<p>
+				<!-- Menu com as opções que se pode escolher...-->
+				<div class="form-group">
+				<select onchange="show_item(this)" class="combobox input-large form-control" name="normal">
+					<option value="" selected="selected">Escolha o sistema:</option>
+					<option value="DeT3EA">Defensores de Toquio 3 Edição Alpha</option>
+					<option value="V20th">Vampiro 20th</option>
+				</select>
+				</div>
+				</p>
 			</div>
 			</div>
 		</div>
@@ -30,7 +41,25 @@
 
 		<!--
 		<script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="thirdparty/bootstrap/dist/js/bootstrap.min.js"></script> -->
+		-->
+		<script type="text/javascript" src="thirdparty/jquery.js"></script>
+		<script type="text/javascript" src="thirdparty/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="thirdparty/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+		function show_item(sel){
+			if( sel.value != "" ){
+				window.location = sel.value+'.html';
+			}
+		}
+
+		$(document).ready(function(){
+			// Ativar combobox em todos as classes "combobox".
+			// Por algum motivo esse não é o comportamento padrão...
+			$('.combobox').combobox();
+		});
+		//]]>
+		</script>
 	</body>
 </html>
 
