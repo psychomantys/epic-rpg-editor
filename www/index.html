@@ -26,7 +26,7 @@
 				<p>
 				<!-- Menu com as opções que se pode escolher...-->
 				<div class="form-group">
-				<select onchange="show_item(this)" class="combobox input-large form-control" name="normal">
+				<select onchange="go_to_system(this)" class="combobox input-large form-control" name="normal">
 					<option value="" selected="selected">Escolha o sistema:</option>
 					<option value="DeT3EA">Defensores de Toquio 3 Edição Alpha</option>
 					<option value="V20th">Vampiro 20th</option>
@@ -47,7 +47,7 @@
 		<script type="text/javascript" src="thirdparty/bootstrap-combobox/js/bootstrap-combobox.js"></script>
 		<script type="text/javascript">
 		//<![CDATA[
-		function show_item(sel){
+		function go_to_system(sel){
 			if( sel.value != "" ){
 				window.location = sel.value+'.html';
 			}
