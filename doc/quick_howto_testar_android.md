@@ -5,7 +5,7 @@ Um tutorial sobre como fazer para testar no android. Vou passo a passo desdo com
 
 Esse tutorial esta utilizando linux em linha de comando para fazer todos os procedimentos, não testei em outras plataformas, mas deve funcionar igualmente bem.
 
-Também preste atenção as dependencias de programas. Como não se tem um 
+Também preste atenção as dependencias de programas. Como não se tem um dos poucos programas que eu menciono aqui, você tem que ver como instalar na sua distribuição ou sistema.
 
 Baixando o SDK do android
 =========================================================
@@ -101,15 +101,48 @@ export PATH="${PATH}:./node_modules/.bin/:${HOME}/node_modules/.bin/"
 Iniciando no android
 =========================================================
 
+Ativando o modo de desenvolvimento
+---------------------------------------------------------
 Feito tudo isso, estamos quase lá.
 
 Precisamos ativar o modo de desenvolvedor para rodar diretamente no nosso dispositivo. Siga os passos do link:
 
 http://developer.android.com/tools/device.html
 
-Com o android aceitando o modo de desenvolvimento, para instalar e rodar o aplicativo, basta apenas executar:
+Adicionando a plataforma android no cordova
+---------------------------------------------------------
+
+Também tem que ser adicionado a possibilidade de gerar um pacote para o android no cordova.
+
+Isso é importante porque não se pode gerar para todas as plataformas, então você tem que adicionar a plataforma que você que gerar naquele momento. E o seu ambiente tem que suportar gerar para aquela plataforma, se não o cordova vai reclamar. Para mais detalhes, veja a documentação do cordova, mas no nosso caso basta executar:
+
+```shell
+cordova platform add android
+```
+
+Ou, caso você não tenha configurado o PATH correto no seu sistema:
+
+```shell
+./node_modules/.bin/cordova platform add android
+```
+
+Instalando e executando a versão de debug
+---------------------------------------------------------
+
+Com:
+
+* android aceitando o modo de desenvolvimento
+* adicionado a plataforma android no cordova 
+* O celular conectado no computador
+
+Para instalar e rodar o aplicativo, basta apenas executar:
 
 ```shell
 npm start
 ```
+
+Toques finais
+---------------------------------------------------------
+
+Deve esta tudo certo, mas lembresse agora que esse não é o procedimento para gerar uma versão final(ver o outro documento sobre como gerar a versão alinhada e assinada em modo release) e o icone do aplicativo não fica o que foi escolhido, para isso veja o script ```tools/gen_android_icon.sh```.
 
