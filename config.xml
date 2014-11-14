@@ -8,5 +8,6 @@
         Epic Team
     </author>
     <content src="index.html" />
+    <icon src="www/img/logo.png" />
     <access origin="*" />
 </widget>
