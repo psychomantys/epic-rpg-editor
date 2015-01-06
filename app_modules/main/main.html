@@ -1,0 +1,35 @@
+<div ng-controller="MainCtrl">
+  <tabset>
+    <tab disabled="true">
+      <tab-heading>
+        3D&T
+      </tab-heading>
+    </tab>
+    <tab
+    ng-repeat="tab in tabs"
+    heading="{{tab.name}}"
+    active="tab.active"
+    select="go(tab)"
+    disabled="tab.disabled"></tab>
+
+    <tab>
+      <tab-heading>
+        <span class="dropdown" dropdown>
+          <a href class="dropdown-toggle" dropdown-toggle>
+            Menu
+          </a>
+          <ul class="dropdown-menu">
+            <li>Character Menu</li>
+            <li><a>Save Character</a></li>
+            <li><a>Load Character</a></li>
+            <li class="divider"></li>
+            <li>System Menu</li>
+            <li><a>Back to Main</a></li>
+          </ul>
+        </span>
+      </tab-heading>
+    </tab>
+  </tabset>
+
+  <div ui-view></div>
+</div>
