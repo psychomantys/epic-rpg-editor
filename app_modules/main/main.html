@@ -1,22 +1,24 @@
-<div ng-controller="MainCtrl">
-  <tabset>
-    <tab disabled="true">
-      <tab-heading>
-        3D&T
-      </tab-heading>
-    </tab>
-    <tab
-    ng-repeat="tab in tabs"
-    heading="{{tab.name}}"
-    active="tab.active"
-    select="go(tab)"
-    disabled="tab.disabled"></tab>
+<div>
+  <!-- NavBar -->
 
-    <tab>
-      <tab-heading>
-        <my-menu></my-menu>
-      </tab-heading>
-    </tab>
-  </tabset>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+        <span class="sr-only">Toogle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">3DeT</a>
+    </div>
+
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="nav in navs"><a ng-click="go(nav)">{{nav.name}}</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Rest of the content -->
   <div ui-view></div>
 </div>
