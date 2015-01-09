@@ -1,7 +1,7 @@
 angular.module("bsb.3det", ["bsb.main", "ui.router", "ui.bootstrap"])
     .config(["$stateProvider", "$urlRouterProvider",
              function($stateProvider, $urlRouterProvider) {
-                 $urlRouterProvider.otherwise("/seletor");
+                 $urlRouterProvider.otherwise("/3det");
 
                  $stateProvider
                      .state("3det",
