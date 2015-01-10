@@ -15,6 +15,25 @@ angular.module("bsb.3det.main", ["ui.router"])
                              description: "teatatata",
                              cost: 1
                          }
+                     ],
+                     desvantagens: [
+                         {
+                             name: "feio",
+                             description: "nobody loves",
+                             cost: -2
+                         },
+                         {
+                             name: "cego",
+                             description: "namorada o traiu e ele nem viu",
+                             cost: -3
+                         }
+                     ],
+                     pericias: [
+                         {
+                             name: "Crime",
+                             description: "Fez senai",
+                             cost: 1
+                         }
                      ]
                  };
 

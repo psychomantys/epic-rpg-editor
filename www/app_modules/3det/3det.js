@@ -1,4 +1,4 @@
-angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "bsb.3det.vantagens", "ui.bootstrap", "ui.router"])
+angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "bsb.3det.specials", "ui.bootstrap", "ui.router"])
     .config(["$stateProvider", "$urlRouterProvider",
              function($stateProvider, $urlRouterProvider) {
                  $urlRouterProvider.otherwise("/informacoes");
@@ -19,18 +19,20 @@ angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "bsb.3det.v
                      .state("3det.vantagens",
                             {
                                 url: "/vantagens",
-                                templateUrl: "app_modules/3det/vantagens/vantagens.html",
+                                templateUrl: "app_modules/3det/specials/specials.html",
                                 controller: "VantagemCtrl"
                             })
                      .state("3det.desvantagens",
                             {
                                 url: "/desvantagens",
-                                templateUrl: "app_modules/3det/desvantagens/desvantagens.html"
+                                templateUrl: "app_modules/3det/specials/specials.html",
+                                controller: "DesvantagemCtrl"
                             })
                      .state("3det.pericias",
                             {
                                 url: "/pericias",
-                                templateUrl: "app_modules/3det/pericias/pericias.html"
+                                templateUrl: "app_modules/3det/specials/specials.html",
+                                controller: "PericiaCtrl"
                             });
              }])
     .directive("myMenu",
