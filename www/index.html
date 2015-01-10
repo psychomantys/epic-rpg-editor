@@ -1,21 +1,58 @@
 <!doctype html>
-<html>
-
+<html ng-app="bsb.index">
   <head>
-    <title> Epic rpg editor </title>
+    <title>Epic Rpg Editor</title>
     <link rel="stylesheet" type="text/css" href="bower_components/twitter/dist/css/bootstrap.css">
     <script src="bower_components/angularjs/angular.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="app.js"></script>
-    <script src="app_modules/3det/main/main.js"></script>
-    <script src="app_modules/3det/informacoes/informacoes.js"></script>
     <meta charset="utf-8" />
   </head>
+  <body ng-controller="IndexCtrl">
 
-  <body class="container" ng-app="bsb.3det">
+    <div class="container">
+      <div class="jumbotron">
+        <div class="page-header">
+          <h1><div>Epic RPG Editor</div><div><small>Escolha o seu sistema</small></div></h1>
+        </div>
+        <div class="btn-group btn-group-justified btn-group-vertical">
+          <div class="btn-group">
+            <p>
+              <!-- Menu com as opções que se pode escolher...-->
+              <div class="form-group">
+                <span class="dropdown" dropdown>
+                  <a class="dropdown-toggle" dropdown-toggle>Escolha o sistema</a>
+                  <ul class="dropdown-menu">
+                    <li ng-repeat="system in systems">
+                      <a href="{{system.name}}.html">{{system.name}}</a>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div ui-view></div>
+    <script>
+     angular.module("bsb.index", ["ui.bootstrap"])
+            .controller("IndexCtrl", ["$scope", "$window",
+                                      function($scope, $window) {
+                                        $scope.systems = [
+                                          {
+                                            name: "3det"
+                                          },
+                                          {
+                                            name: "outro"
+                                          }
+                                        ];
 
+                                        $scope.mySystem;
+
+                                        $scope.go = function(system) {
+                                          $window.location.href = $window.location.href.concat(system.name, ".html");
+                                        };
+                                      }]);
+    </script>
   </body>
 </html>

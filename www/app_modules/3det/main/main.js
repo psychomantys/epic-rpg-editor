@@ -1,29 +1,4 @@
-angular.module("bsb.main", ["bsb.informacoes", "ui.router"])
-    .config(["$stateProvider", "$urlRouterProvider",
-             function($stateProvider, $urlRouterProvider) {
-                 $stateProvider
-                     .state("3det.informacoes",
-                            {
-                                url: "/informacoes",
-                                templateUrl: "app_modules/3det/informacoes/informacoes.html",
-                                controller: "InfoCtrl"
-                            })
-                     .state("3det.vantagens",
-                            {
-                                url: "/vantagens",
-                                templateUrl: "app_modules/3det/vantagens/vantagens.html"
-                            })
-                     .state("3det.desvantagens",
-                            {
-                                url: "/desvantagens",
-                                templateUrl: "app_modules/3det/desvantagens/desvantagens.html"
-                            })
-                     .state("3det.pericias",
-                            {
-                                url: "/pericias",
-                                templateUrl: "app_modules/3det/pericias/pericias.html"
-                            });
-             }])
+angular.module("bsb.3det.main", ["ui.router"])
     .factory("CharacterService",[
              function() {
                  // Private
@@ -45,25 +20,20 @@ angular.module("bsb.main", ["bsb.informacoes", "ui.router"])
                                   $scope.navs = [
                                       {
                                           name: "Informações",
-                                          route: "3det.informacoes",
+                                          state: "3det.informacoes",
                                           active: true
                                       },
                                       {
                                           name: "Vantagens",
-                                          route:"3det.vantagens"
+                                          state:"3det.vantagens"
                                       },
                                       {
                                           name: "Desvantagens",
-                                          route: "3det.desvantagens"
+                                          state: "3det.desvantagens"
                                       },
                                       {
                                           name: "Pericias",
-                                          route: "3det.pericias"
+                                          state: "3det.pericias"
                                       }
                                   ];
-
-                                  $scope.go = function(nav) {
-                                      $state.go(nav.route);
-                                  };
-
                               }]);
