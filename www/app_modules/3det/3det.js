@@ -1,4 +1,4 @@
-angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "ui.bootstrap", "ui.router"])
+angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "bsb.3det.vantagens", "ui.bootstrap", "ui.router"])
     .config(["$stateProvider", "$urlRouterProvider",
              function($stateProvider, $urlRouterProvider) {
                  $urlRouterProvider.otherwise("/informacoes");
@@ -19,7 +19,8 @@ angular.module("bsb.3det", ["bsb.3det.main", "bsb.3det.informacoes", "ui.bootstr
                      .state("3det.vantagens",
                             {
                                 url: "/vantagens",
-                                templateUrl: "app_modules/3det/vantagens/vantagens.html"
+                                templateUrl: "app_modules/3det/vantagens/vantagens.html",
+                                controller: "VantagemCtrl"
                             })
                      .state("3det.desvantagens",
                             {

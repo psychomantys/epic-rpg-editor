@@ -1,3 +1,8 @@
 <div>
-  Vantagens
+  <input type="text" ng-model="search" placeholder="Procura"/>
+  <accordion close-other="oneAtATime">
+    <accordion-group ng-repeat="vantagem in character.vantagens | filter : search" heading="{{vantagem.name}} ({{vantagem.cost}})">
+      {{vantagem.description}}
+    </accordion-group>
+  </accordion>
 </div>

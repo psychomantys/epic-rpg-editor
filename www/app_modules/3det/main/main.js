@@ -3,7 +3,19 @@ angular.module("bsb.3det.main", ["ui.router"])
              function() {
                  // Private
                  var character = {
-                     name: "Teste"
+                     name: "Teste",
+                     vantagens: [
+                         {
+                             name: "Teste",
+                             description: "testeste",
+                             cost: 2
+                         },
+                         {
+                             name: "teste12",
+                             description: "teatatata",
+                             cost: 1
+                         }
+                     ]
                  };
 
                  function getCharacter() {
@@ -26,7 +38,7 @@ angular.module("bsb.3det.main", ["ui.router"])
                                       {
                                           name: "Vantagens",
                                           state:"3det.vantagens"
-                                      },
+                                     },
                                       {
                                           name: "Desvantagens",
                                           state: "3det.desvantagens"
