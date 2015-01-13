@@ -70,13 +70,12 @@ angular.module("bsb.3det.main", ["ui.router"])
                      return character.strength.base;
                  };
 
-                 function addStrModifier(str, modifier) {
-                     console.log(modifier.active);
+                 function addModifier(base, modifier) {
                      var total;
                      if (modifier.active) {
-                         total = str + modifier.value;
+                         total = base + modifier.value;
                      } else {
-                         total = str - modifier.value;
+                         total = base - modifier.value;
                      }
 
                      return total;
@@ -85,7 +84,7 @@ angular.module("bsb.3det.main", ["ui.router"])
                  // Public
                  return {
                      getCharacter : getCharacter,
-                     addStrModifier : addStrModifier,
+                     addModifier : addModifier,
                      getStr : getStr
                  };
              }])
