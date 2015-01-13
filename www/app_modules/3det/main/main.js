@@ -4,6 +4,31 @@ angular.module("bsb.3det.main", ["ui.router"])
                  // Private
                  var character = {
                      name: "Teste",
+                     strength: {
+                         base: 2,
+                         types: [
+                             {
+                                 name: "Corte",
+                                 note: "Garras"
+                             },
+                             {
+                                 name: "Perfuração",
+                                 note: "Mordida"
+                             }
+                         ],
+                         modifiers: [
+                             {
+                                 value: 2,
+                                 note: "Quando o personagem do bal ta perto",
+                                 active: true
+                             },
+                             {
+                                 value: 1,
+                                 note: "teste",
+                                 active: true
+                             }
+                         ]
+                     },
                      vantagens: [
                          {
                              name: "Teste",
@@ -41,9 +66,27 @@ angular.module("bsb.3det.main", ["ui.router"])
                      return character;
                  };
 
+                 function getStr() {
+                     return character.strength.base;
+                 };
+
+                 function addStrModifier(str, modifier) {
+                     console.log(modifier.active);
+                     var total;
+                     if (modifier.active) {
+                         total = str + modifier.value;
+                     } else {
+                         total = str - modifier.value;
+                     }
+
+                     return total;
+                 };
+
                  // Public
                  return {
-                     getCharacter : getCharacter
+                     getCharacter : getCharacter,
+                     addStrModifier : addStrModifier,
+                     getStr : getStr
                  };
              }])
     .controller("MainCtrl", ["$scope", "$state",

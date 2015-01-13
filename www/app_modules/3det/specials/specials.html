@@ -1,6 +1,8 @@
+<div class="input-group">
+  <input class="form-control" type="text" ng-model="search" placeholder="Procura"/>
+</div>
 <div>
-  <input type="text" ng-model="search" placeholder="Procura"/>
-  <accordion close-other="oneAtATime">
+  <accordion close-other="false">
     <accordion-group ng-repeat="special in specials | filter : search" heading="{{special.name}} ({{special.cost}})">
       {{special.description}}
     </accordion-group>

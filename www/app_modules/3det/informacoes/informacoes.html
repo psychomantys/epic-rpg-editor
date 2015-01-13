@@ -1,3 +1,30 @@
 <div>
-  nome: {{character.name}}
+  nome: {{character.name}} <br />
+  <button class="btn btn-default" ng-click="strengthModifier = !strengthModifier"tooltip="teste">Força: {{character.strength.total}}</button> <br />
+  <div ng-show="strengthModifier">
+    <label ng-if="character.strength.types.length > 0"> Tipos de ataques: </label> <br />
+    <div>
+      <ul ng-repeat="type in character.strength.types">
+        <li>
+          <label>Nome:</label> {{type.name}} <br />
+          <label>Nota:</label> {{type.note}}
+          <br ng-if="character.strength.types.length > 1"/>
+        </li>
+      </ul>
+    </div>
+    <label ng-if="character.strength.modifiers > 0">Modificadores:</label> <br />
+    <div>
+      <ul ng-repeat="modifier in character.strength.modifiers">
+        <li>
+          <label>Valor:</label> {{modifier.value}} <br />
+          <label>Note:</label> {{modifier.note}} <br />
+          <label>Ativar:</label> <input type="checkbox" ng-click="addStrModifier(modifier)" value="{{modifier.active}}" ng-model="modifier.active"> <br />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a tooltip="character.ability.modifier">Habilidade</a> <br />
+  <a tooltip="character.resistence.modifier">Resistência</a> <br />
+  <a tooltip="character.armor.modifier">Armadura</a> <br />
+  <a tooltip="character.firepower.modifier">Poder de Fogo</a> <br />
 </div>
